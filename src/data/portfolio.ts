@@ -172,7 +172,7 @@ export const projects: Project[] = [
     techStack: ['React', 'Vite', 'TypeScript', 'Vercel'],
     category: 'Web',
     featured: true,
-    liveUrl: 'https://kunal-sharama-dev.vercel.app',
+    liveUrl: 'https://nexora-navy-omega.vercel.app',
   },
   {
     id: 'docly',
