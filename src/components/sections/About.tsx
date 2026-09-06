@@ -104,13 +104,13 @@ export function About() {
           <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-mono-500">
             <span className="text-white">$</span> whoami --brief
           </p>
-          <p className="font-mono text-lg font-bold leading-snug text-white sm:text-xl lg:text-2xl">
-            Self-taught developer —{' '}
-            <span className="text-mono-300">2+ years of hands-on building</span> across{' '}
-            <span className="underline decoration-white/50 underline-offset-4">web</span>,{' '}
-            <span className="underline decoration-white/50 underline-offset-4">Android</span> and{' '}
-            <span className="underline decoration-white/50 underline-offset-4">APIs</span>.
-          </p>
+<p className="font-mono text-lg font-bold leading-snug text-white sm:text-xl lg:text-2xl">
+  <span className="text-mono-300">3+ years of hands-on experience</span> building{' '}
+  <span className="underline decoration-white/50 underline-offset-4">AI-powered products</span>,{' '}
+  <span className="underline decoration-white/50 underline-offset-4">automation workflows</span>{' '}
+  and{' '}
+  <span className="underline decoration-white/50 underline-offset-4">software experiments</span>.
+</p>
         </div>
       </Reveal>
 
