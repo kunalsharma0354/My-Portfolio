@@ -19,7 +19,6 @@ import {
 export interface PersonalInfo {
   name: string;
   location: string;
-  education: string;
   headline: string;
   email: string;
   github: string;
@@ -39,6 +38,7 @@ export interface Project {
   description: string;
   longDescription: string;
   challenges: string[];
+  metrics: { value: string; label: string }[];
   details: string[];
   techStack: string[];
   category: 'Web' | 'Android' | 'AI & Tools' | 'Discord';
@@ -61,7 +61,6 @@ export interface Strength {
 export const personalInfo: PersonalInfo = {
   name: 'Kunal Sharma',
   location: 'Nagpur, Maharashtra, India',
-  education: 'Higher Secondary Education',
   headline:
     'Building practical web and Android applications — React + TypeScript, Kotlin, and AI-assisted workflows for faster, cleaner engineering.',
   email: 'kunalsharma9321@gmail.com',
@@ -139,6 +138,12 @@ export const projects: Project[] = [
       'Redacting sensitive data from request logs without hurting debuggability',
       'Keeping latency and TTL across the full lab state on Vercel KV within free-tier limits',
     ],
+    metrics: [
+      { value: '7', label: 'interactive labs' },
+      { value: '7', label: 'protection mechanisms' },
+      { value: '65', label: 'automated tests' },
+      { value: '0', label: 'secrets leaked in logs' },
+    ],
     details: [
       'React 18 + Vite 5 + TypeScript (strict) frontend',
       'Vercel Serverless backend (TypeScript)',
@@ -164,6 +169,12 @@ export const projects: Project[] = [
       'Making heavy interactions (tilt, ripple, typewriter) degrade gracefully on touch devices',
       'Rendering a large one-page site without a single horizontal-overflow bug on 320px phones',
     ],
+    metrics: [
+      { value: '~120 kB', label: 'JS bundle, gzip' },
+      { value: '0', label: 'horizontal overflow bugs' },
+      { value: '320px', label: 'smallest tested viewport' },
+      { value: '100%', label: 'reduced-motion safe' },
+    ],
     details: [
       'Personal developer portfolio',
       'Deployed on Vercel',
@@ -185,6 +196,12 @@ export const projects: Project[] = [
       'Bridging on-device OCR extraction with cloud LLM context cleanly on phone hardware',
       'Getting one-tap flows to feel instant despite multiple processing stages',
       'Protecting the build from tampering via an integrity blob (secgen plugin)',
+    ],
+    metrics: [
+      { value: '85+', label: 'languages supported' },
+      { value: '4', label: 'document types' },
+      { value: '1-tap', label: 'summary flow' },
+      { value: 'on-device', label: 'OCR extraction' },
     ],
     details: [
       'Kotlin + Jetpack Compose (Material 3)',
@@ -209,6 +226,12 @@ export const projects: Project[] = [
       'Serving YouTube, Shorts and Instagram through one clean auto-resolver flow',
       'Processing media reliably on-device with MediaExtractor / MediaMuxer',
       'Keeping the preview card accurate and the UI state-safe across downloads',
+    ],
+    metrics: [
+      { value: '2', label: 'platforms auto-detected' },
+      { value: '4K', label: 'max quality' },
+      { value: '3', label: 'download modes' },
+      { value: '1 paste', label: 'to resolve a link' },
     ],
     details: [
       'Kotlin + Jetpack Compose (Material 3)',

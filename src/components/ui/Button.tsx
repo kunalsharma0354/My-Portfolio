@@ -77,6 +77,7 @@ export function Button({
       onPointerDown={interactive ? handleRipple : onPointerDown}
       className={`btn inline-flex min-h-[44px] items-center justify-center gap-2 rounded-sm transition-all duration-200 ${variants[variant]} ${sizes[size]} ${block ? 'w-full' : ''} ${interactive ? 'relative overflow-hidden' : ''} ${className}`}
       whileTap={reduced ? undefined : { scale: 0.97 }}
+      transition={{ type: 'spring', stiffness: 450, damping: 28, mass: 0.6 }}
       {...props}
     >
       {needsWrap ? (

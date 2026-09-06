@@ -1,8 +1,8 @@
 import { personalInfo } from '@/data/portfolio';
 
-const subject = 'Hiring Kunal Sharma — opportunity';
+const fallbackSubject = 'Hiring Kunal Sharma — opportunity';
 
-const body = [
+const fallbackBody = [
   'Hi Kunal,',
   '',
   'I came across your portfolio and was impressed by your work.',
@@ -13,14 +13,14 @@ const body = [
   '[Your role] — [Company]',
 ].join('\n');
 
-export function hireComposeUrl() {
+export function hireComposeUrl(options: { subject?: string; body?: string } = {}) {
   const params = new URLSearchParams({
     view: 'cm',
     fs: '1',
     tf: '1',
     to: personalInfo.email,
-    su: subject,
-    body,
+    su: options.subject ?? fallbackSubject,
+    body: options.body ?? fallbackBody,
   });
   return `https://mail.google.com/mail/?${params.toString()}`;
 }

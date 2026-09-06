@@ -61,10 +61,14 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         initial={reduced ? false : { opacity: 0, y: 24, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={reduced ? undefined : { opacity: 0, y: 16, scale: 0.98 }}
-        transition={{ duration: reduced ? 0 : 0.25, ease: 'easeOut' }}
+        transition={
+          reduced
+            ? undefined
+            : { type: 'spring', stiffness: 180, damping: 22, mass: 0.8 }
+        }
       >
         <div className="flex items-center justify-between gap-4 border-b border-mono-800 px-5 py-3.5 sm:px-6">
-          <p className="truncate font-mono text-[11px] uppercase tracking-[0.15em] text-mono-500">
+          <p className="selectable truncate font-mono text-[11px] uppercase tracking-[0.15em] text-mono-500">
             <span className="text-white">$</span> cat {project.id}.json | jq .
           </p>
           <button
@@ -91,6 +95,24 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               <p className="eyebrow mb-2">// overview</p>
               <p className="fluid-base leading-relaxed text-mono-300">{project.longDescription}</p>
             </div>
+
+            {project.metrics.length > 0 ? (
+              <div>
+                <p className="eyebrow mb-3">// impact</p>
+                <div className="grid grid-cols-2 gap-px overflow-hidden border border-mono-800 bg-mono-800 sm:grid-cols-4">
+                  {project.metrics.map((metric) => (
+                    <div key={metric.label} className="bg-mono-950 p-4 sm:p-5">
+                      <p className="font-mono text-lg font-black tracking-tight text-white sm:text-xl">
+                        {metric.value}
+                      </p>
+                      <p className="mt-1 font-mono text-[10px] uppercase leading-snug tracking-[0.2em] text-mono-500">
+                        {metric.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
 
             <div>
               <p className="eyebrow mb-3">// challenges solved</p>

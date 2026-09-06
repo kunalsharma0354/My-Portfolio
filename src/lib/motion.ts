@@ -16,7 +16,15 @@ export const motionTokens = {
     base: 0.06,
     loose: 0.1,
     section: 0.08,
+    card: 0.08,
+    list: 0.04,
+    nav: 0.02,
   } as const,
+  spring: {
+    snappy: { stiffness: 450, damping: 28, mass: 0.6 } as const,
+    gentle: { stiffness: 180, damping: 22, mass: 0.8 } as const,
+    bouncy: { stiffness: 350, damping: 20, mass: 0.7 } as const,
+  },
   viewport: {
     once: true,
     margin: '-10% 0px -10% 0px',

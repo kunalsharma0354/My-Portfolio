@@ -63,7 +63,6 @@ export function Hero() {
               <MapPin className="h-3.5 w-3.5 text-white" aria-hidden="true" />
               {personalInfo.location}
             </span>
-            <span>{personalInfo.education}</span>
           </div>
         </Reveal>
 

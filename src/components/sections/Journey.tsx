@@ -34,7 +34,7 @@ export function Journey() {
       </ol>
 
       <Reveal delay={0.15}>
-        <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-mono-600">
+        <p className="selectable mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-mono-600">
           // tip: not everything fits on a resume.
         </p>
       </Reveal>

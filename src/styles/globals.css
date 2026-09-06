@@ -25,6 +25,11 @@
     @apply bg-white text-black;
   }
 
+  .selectable {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
   :focus-visible {
     @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-mono-950;
   }

@@ -22,7 +22,7 @@ export function Footer() {
             <span className="text-mono-500">$</span> whoami
           </p>
           <p className="mt-3 font-mono text-sm text-mono-400">
-            {personalInfo.name} — {personalInfo.education}
+            {personalInfo.name}
           </p>
           <p className="mt-1 font-mono text-xs text-mono-600">{personalInfo.location}</p>
         </div>
@@ -47,7 +47,8 @@ export function Footer() {
           <p className="eyebrow mb-4">Terminal</p>
           <div className="space-y-1.5 font-mono text-sm">
             <p className="text-mono-600">
-              <span className="text-mono-400">❯</span> click https://kunal-sharama-dev.vercel.app
+              <span className="text-mono-400">❯</span>{' '}
+              <span className="selectable">click https://kunal-sharama-dev.vercel.app</span>
             </p>
             <p className="text-white">Welcome to the portfolio.</p>
             <p className="text-mono-600">

@@ -10,7 +10,6 @@ import developerPhoto from '@/assets/images/developer.png';
 const facts = [
   { label: 'location', value: 'Nagpur, Maharashtra, India' },
   { label: 'focus', value: 'Web · Android · APIs' },
-  { label: 'education', value: 'Higher Secondary Education' },
   { label: 'motto', value: 'Ship fast, solve problems.' },
 ];
 
@@ -104,7 +103,7 @@ export function About() {
           <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-mono-500">
             <span className="text-white">$</span> whoami --brief
           </p>
-<p className="font-mono text-lg font-bold leading-snug text-white sm:text-xl lg:text-2xl">
+<p className="selectable font-mono text-lg font-bold leading-snug text-white sm:text-xl lg:text-2xl">
   <span className="text-mono-300">3+ years of hands-on experience</span> building{' '}
   <span className="underline decoration-white/50 underline-offset-4">AI-powered products</span>,{' '}
   <span className="underline decoration-white/50 underline-offset-4">automation workflows</span>{' '}
