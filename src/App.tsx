@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { TechTicker } from '@/components/common/TechTicker';
 import { Footer } from '@/components/layout/Footer';
@@ -10,8 +10,10 @@ import { Journey } from '@/components/sections/Journey';
 import { Projects } from '@/components/sections/Projects';
 import { Skills } from '@/components/sections/Skills';
 import { Strengths } from '@/components/sections/Strengths';
+import { TypewriterText } from '@/components/ui/TypewriterText';
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { motionTokens } from '@/lib/motion';
 
 const shortcuts = [
   { key: 'g', action: 'projects' },
@@ -29,7 +31,24 @@ function scrollToSection(id: string) {
 
 export default function App() {
   const [showShortcuts, setShowShortcuts] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
   const reduced = useReducedMotion();
+
+  useEffect(() => {
+    if (reduced) {
+      setShowIntro(false);
+      return;
+    }
+    if (sessionStorage.getItem('nexora_intro_seen')) {
+      setShowIntro(false);
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      sessionStorage.setItem('nexora_intro_seen', '1');
+      setShowIntro(false);
+    }, 1400);
+    return () => window.clearTimeout(timer);
+  }, [reduced]);
 
   const toggleHelp = useCallback(() => {
     setShowShortcuts((value) => !value);
@@ -53,6 +72,22 @@ export default function App() {
       >
         Skip to projects
       </a>
+
+      <AnimatePresence>
+        {showIntro ? (
+          <motion.div
+            role="presentation"
+            aria-hidden="true"
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-mono-950"
+            exit={{ opacity: 0, transition: { duration: motionTokens.duration.fast, ease: motionTokens.ease.gentle } }}
+          >
+            <p className="font-mono text-base text-mono-300 sm:text-xl">
+              <span className="text-white">$</span>{' '}
+              <TypewriterText text="init nexora..." speed={26} startDelay={200} className="inline-block" />
+            </p>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
 
       <Header />
       <main>

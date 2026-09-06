@@ -18,9 +18,27 @@ const navItems = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('');
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 24, mass: 0.3 });
+
+  useEffect(() => {
+    const ids = navItems.map((item) => item.href.slice(1));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 },
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -84,16 +102,22 @@ export function Header() {
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">
-          {navItems.map((item, index) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                className="nav-link group font-mono text-xs uppercase tracking-[0.2em] text-mono-400 transition-colors hover:text-white"
-              >
-                <span className="text-mono-600">0{index + 1}.</span> {item.label}
-              </a>
-            </li>
-          ))}
+          {navItems.map((item, index) => {
+            const isActive = active === item.href.replace('#', '');
+            return (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  aria-current={isActive ? 'true' : undefined}
+                  className={`nav-link group font-mono text-xs uppercase tracking-[0.2em] transition-colors hover:text-white ${
+                    isActive ? 'text-white' : 'text-mono-400'
+                  }`}
+                >
+                  <span className={isActive ? 'text-white' : 'text-mono-600'}>0{index + 1}.</span> {item.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="hidden lg:block">

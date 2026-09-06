@@ -1,6 +1,14 @@
 import type { Variants } from 'framer-motion';
+import { motionTokens } from '@/lib/motion';
 
 export const easeOutExpo: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+export const pageTransition = {
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -12 },
+  transition: { duration: motionTokens.duration.base, ease: motionTokens.ease.standard },
+};
 
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },

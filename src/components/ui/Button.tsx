@@ -1,11 +1,16 @@
 import type { ComponentPropsWithRef, PointerEvent as ReactPointerEvent } from 'react';
+import { motion } from 'framer-motion';
 import { useMagnetic } from '@/hooks/useMagnetic';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 type Variant = 'primary' | 'ghost' | 'outline';
 type Size = 'sm' | 'md' | 'lg';
 
-interface ButtonProps extends ComponentPropsWithRef<'a'> {
+interface ButtonProps
+  extends Omit<
+    ComponentPropsWithRef<'a'>,
+    'onDrag' | 'onDragStart' | 'onDragEnd' | 'onAnimationStart' | 'onAnimationEnd'
+  > {
   variant?: Variant;
   size?: Size;
   block?: boolean;
@@ -67,10 +72,11 @@ export function Button({
   const interactive = magnetic || ripple;
 
   return (
-    <a
+    <motion.a
       ref={magnetic ? magneticRef : undefined}
       onPointerDown={interactive ? handleRipple : onPointerDown}
       className={`btn inline-flex min-h-[44px] items-center justify-center gap-2 rounded-sm transition-all duration-200 ${variants[variant]} ${sizes[size]} ${block ? 'w-full' : ''} ${interactive ? 'relative overflow-hidden' : ''} ${className}`}
+      whileTap={reduced ? undefined : { scale: 0.97 }}
       {...props}
     >
       {needsWrap ? (
@@ -78,6 +84,6 @@ export function Button({
       ) : (
         children
       )}
-    </a>
+    </motion.a>
   );
 }

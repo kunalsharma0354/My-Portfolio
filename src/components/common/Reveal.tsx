@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { easeOutExpo } from '@/components/ui/MotionPrimitives';
+import { motionTokens } from '@/lib/motion';
 
 interface RevealProps {
   children: ReactNode;
@@ -21,8 +21,8 @@ export function Reveal({ children, delay = 0, className }: RevealProps) {
       className={className}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-70px' }}
-      transition={{ duration: 0.65, delay, ease: easeOutExpo }}
+      viewport={motionTokens.viewport}
+      transition={{ duration: motionTokens.duration.base, delay, ease: motionTokens.ease.standard }}
     >
       {children}
     </motion.div>

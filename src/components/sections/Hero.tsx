@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronDown, Download, MapPin, Send } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
@@ -6,13 +8,21 @@ import { TypewriterText } from '@/components/ui/TypewriterText';
 import { Reveal } from '@/components/common/Reveal';
 import { Letters } from '@/components/common/Letters';
 import { personalInfo, resume } from '@/data/portfolio';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 export function Hero() {
+  const reduced = useReducedMotion();
   const firstName = personalInfo.name.split(' ')[0];
   const lastName = personalInfo.name.split(' ').slice(1).join(' ');
 
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const { scrollY } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
+  const nameY = useTransform(scrollY, [0, 400], [0, -48]);
+  const heroFade = useTransform(scrollY, [0, 260], [1, 0]);
+
   return (
     <section
+      ref={sectionRef}
       id="top"
       aria-label="Introduction"
       className="relative flex min-h-[100svh] items-center overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-32"
@@ -33,10 +43,13 @@ export function Hero() {
           />
         </p>
 
-        <h1 className="font-mono font-black tracking-tight text-white">
+        <motion.h1
+          className="font-mono font-black tracking-tight text-white"
+          style={reduced ? undefined : { y: nameY, opacity: heroFade }}
+        >
           <Letters text={firstName} className="fluid-hero block" />
           <Letters text={lastName} className="fluid-hero block text-mono-500" glitch />
-        </h1>
+        </motion.h1>
 
         <Reveal delay={0.15}>
           <p className="mt-7 max-w-2xl fluid-base leading-relaxed text-mono-300 sm:mt-8 sm:text-lg lg:text-xl">
