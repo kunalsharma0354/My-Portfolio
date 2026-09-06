@@ -17,6 +17,8 @@
 
   body {
     @apply bg-mono-950 text-mono-100 font-sans;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   ::selection {
