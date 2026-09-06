@@ -79,7 +79,7 @@ export function Footer() {
 
       <div className="border-t border-mono-800">
         <div className="section-shell flex flex-col items-center justify-between gap-2 py-6 font-mono text-xs text-mono-600 sm:flex-row">
-          <p>© 2024 {personalInfo.name}. All rights reserved.</p>
+          <p>© 2023 {personalInfo.name}. All rights reserved.</p>
         </div>
       </div>
     </footer>
