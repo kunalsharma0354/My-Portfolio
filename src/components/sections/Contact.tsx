@@ -7,7 +7,7 @@ import { hireComposeUrl } from '@/lib/gmail';
 
 export function Contact() {
   return (
-    <Section id="contact" no="05" label="connect" title="Let's Build Together">
+    <Section id="contact" no="06" label="connect" title="Let's Build Together">
       <Reveal>
         <div className="mx-auto max-w-3xl border border-mono-800 bg-mono-900/50 p-8 sm:p-14 lg:p-16">
           <p className="fluid-contact font-mono font-black tracking-tight text-white">

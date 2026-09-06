@@ -6,6 +6,7 @@ import { Header } from '@/components/layout/Header';
 import { About } from '@/components/sections/About';
 import { Contact } from '@/components/sections/Contact';
 import { Hero } from '@/components/sections/Hero';
+import { Journey } from '@/components/sections/Journey';
 import { Projects } from '@/components/sections/Projects';
 import { Skills } from '@/components/sections/Skills';
 import { Strengths } from '@/components/sections/Strengths';
@@ -16,6 +17,7 @@ const shortcuts = [
   { key: 'g', action: 'projects' },
   { key: 's', action: 'skills' },
   { key: 'a', action: 'about' },
+  { key: 'j', action: 'journey' },
   { key: 'k', action: 'contact' },
   { key: 'm', action: 'menu' },
   { key: '?', action: 'undo' },
@@ -37,6 +39,7 @@ export default function App() {
     g: () => scrollToSection('#projects'),
     s: () => scrollToSection('#skills'),
     a: () => scrollToSection('#about'),
+    j: () => scrollToSection('#journey'),
     k: () => scrollToSection('#contact'),
     '?': toggleHelp,
     '/': toggleHelp,
@@ -56,6 +59,7 @@ export default function App() {
         <Hero />
         <TechTicker />
         <About />
+        <Journey />
         <Skills />
         <Projects />
         <Strengths />

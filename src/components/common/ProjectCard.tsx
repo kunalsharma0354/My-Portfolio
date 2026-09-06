@@ -1,4 +1,4 @@
-import { ExternalLink, Star } from 'lucide-react';
+import { ChevronRight, ExternalLink, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Tilt } from '@/components/ui/Tilt';
@@ -7,6 +7,7 @@ import type { Project } from '@/data/portfolio';
 
 interface ProjectCardProps {
   project: Project;
+  onViewDetails?: (project: Project) => void;
 }
 
 const categoryTag: Record<Project['category'], string> = {
@@ -16,7 +17,7 @@ const categoryTag: Record<Project['category'], string> = {
   Discord: 'DISCORD',
 };
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
   return (
     <Tilt className="h-full" maxTilt={4} lift={4}>
       <Card
@@ -83,6 +84,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <GithubIcon className="h-3.5 w-3.5" />
             Source
           </a>
+        ) : null}
+        {onViewDetails ? (
+          <button
+            type="button"
+            onClick={() => onViewDetails(project)}
+            className="ml-auto inline-flex items-center gap-1 font-mono text-xs uppercase tracking-[0.2em] text-mono-500 transition-colors hover:text-white"
+          >
+            Details
+            <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </button>
         ) : null}
       </div>
       </Card>

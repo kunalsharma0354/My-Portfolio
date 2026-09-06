@@ -37,12 +37,20 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  longDescription: string;
+  challenges: string[];
   details: string[];
   techStack: string[];
   category: 'Web' | 'Android' | 'AI & Tools' | 'Discord';
   githubUrl?: string;
   liveUrl?: string;
   featured: boolean;
+}
+
+export interface Milestone {
+  year: string;
+  title: string;
+  description: string;
 }
 
 export interface Strength {
@@ -59,7 +67,7 @@ export const personalInfo: PersonalInfo = {
   email: 'kunalsharma9321@gmail.com',
   github: 'https://github.com/kunalsharma0354',
   linkedin: 'https://linkedin.com/in/kunal-sharma-017000433',
-  website: 'https://nexora-navy-omega.vercel.app',
+  website: 'https://kunal-sharama-dev.vercel.app',
 };
 
 export const resume = {
@@ -124,6 +132,13 @@ export const projects: Project[] = [
     title: 'NEXORA API Security Lab',
     description:
       'A production-ready educational platform demonstrating seven core API protection mechanisms through interactive labs — rate limiting, authentication, validation, payload limits, timeouts and layered defense.',
+    longDescription:
+      'A hands-on educational platform that makes API security tangible. Each lab is a real, running endpoint you can attack, observe and fix — with live metrics, request logging with credential redaction, and a secure API key issuer. Built around one simple idea: you learn security by breaking and fixing things yourself.',
+    challenges: [
+      'Designing 7 labs that are realistic enough to teach, but safe enough to share publicly',
+      'Redacting sensitive data from request logs without hurting debuggability',
+      'Keeping latency and TTL across the full lab state on Vercel KV within free-tier limits',
+    ],
     details: [
       'React 18 + Vite 5 + TypeScript (strict) frontend',
       'Vercel Serverless backend (TypeScript)',
@@ -142,6 +157,13 @@ export const projects: Project[] = [
     title: 'NEXORA Portfolio',
     description:
       'Personal developer portfolio showcasing projects, skills and workflows — built and deployed to Vercel.',
+    longDescription:
+      'The site you are on right now. A monochrome brutalist personal portfolio — terminal-first design with typewriter effects, glitch typography, scanlines and magnetic interactions. Built with React 19, Vite and Tailwind, fully responsive and reduced-motion safe. Every section is data-driven from a single source of truth.',
+    challenges: [
+      'Committing to a strictly monochrome brutalist identity — zero color, but still visually rich',
+      'Making heavy interactions (tilt, ripple, typewriter) degrade gracefully on touch devices',
+      'Rendering a large one-page site without a single horizontal-overflow bug on 320px phones',
+    ],
     details: [
       'Personal developer portfolio',
       'Deployed on Vercel',
@@ -150,13 +172,20 @@ export const projects: Project[] = [
     techStack: ['React', 'Vite', 'TypeScript', 'Vercel'],
     category: 'Web',
     featured: true,
-    liveUrl: 'https://nexora-navy-omega.vercel.app',
+    liveUrl: 'https://kunal-sharama-dev.vercel.app',
   },
   {
     id: 'docly',
     title: 'Docly',
     description:
       'AI-powered document assistant for Android — one-tap summaries and chat for PDFs, Word, Excel, e-books and images, with on-device extraction powered by Mistral AI.',
+    longDescription:
+      'An all-in-one document AI assistant for Android. Open any document — PDF, Word, Excel, e-book or scanned image — and Docly summarizes it, chats with its content across 85+ languages, and reads it aloud with language-aware voices. Extraction happens on-device through ML Kit OCR; understanding happens through Mistral AI.',
+    challenges: [
+      'Bridging on-device OCR extraction with cloud LLM context cleanly on phone hardware',
+      'Getting one-tap flows to feel instant despite multiple processing stages',
+      'Protecting the build from tampering via an integrity blob (secgen plugin)',
+    ],
     details: [
       'Kotlin + Jetpack Compose (Material 3)',
       'One-tap AI summaries from PDFs, Office, e-books & OCR images',
@@ -174,6 +203,13 @@ export const projects: Project[] = [
     title: 'Savora',
     description:
       'A modern Android media downloader — paste a YouTube (videos, Shorts) or Instagram (Reels) link and Savora detects the platform, resolves formats automatically and saves to Downloads.',
+    longDescription:
+      'A pragmatic offline-first media downloader. Paste any YouTube or Instagram link and Savora auto-detects the platform, resolves available formats, and saves to the device — with video, video-only and audio modes, bitrate selection, 4K options and a live preview card before you commit to a download.',
+    challenges: [
+      'Serving YouTube, Shorts and Instagram through one clean auto-resolver flow',
+      'Processing media reliably on-device with MediaExtractor / MediaMuxer',
+      'Keeping the preview card accurate and the UI state-safe across downloads',
+    ],
     details: [
       'Kotlin + Jetpack Compose (Material 3)',
       'Video, video-only & audio download modes',
@@ -186,6 +222,39 @@ export const projects: Project[] = [
     category: 'Android',
     githubUrl: 'https://github.com/kunalsharma0354/Savora',
     featured: false,
+  },
+];
+
+export const milestones: Milestone[] = [
+  {
+    year: '2023',
+    title: '$ mkdir --hidden .start',
+    description:
+      'An empty directory in a quiet room. No account, no history, no trace — the first signal appeared, committed to no one.',
+  },
+  {
+    year: '2024',
+    title: 'offline builds // NO SYNC',
+    description:
+      'First web stacks compiled in the dark. Android binaries flashed and wiped. Every line exists where nobody can find it — except me.',
+  },
+  {
+    year: '2025',
+    title: '> ACCESS DENIED',
+    description:
+      'Projects that never shipped publicly. An API security lab running on a private node. AI tools built for an audience of one. More happened here than this page will ever admit.',
+  },
+  {
+    year: '2026',
+    title: '$ git push --public',
+    description:
+      'The curtain dropped. Docly, Savora, NEXORA API Security Lab and the person behind them finally sync to a public address — kunalsharma0354.',
+  },
+  {
+    year: '2026',
+    title: 'THE SIGNAL IS LIVE',
+    description:
+      'This page. Three-plus years compressed into a blinking cursor. Everything before it was just what survived the wipe.',
   },
 ];
 

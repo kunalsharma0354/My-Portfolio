@@ -7,7 +7,7 @@ import { skillGroups } from '@/data/portfolio';
 
 export function Skills() {
   return (
-    <Section id="skills" no="02" label="stack" title="Skills & Technologies">
+    <Section id="skills" no="03" label="stack" title="Skills & Technologies">
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
         {skillGroups.map((group, groupIndex) => (
           <Reveal key={group.title} delay={groupIndex * 0.1} className="h-full">

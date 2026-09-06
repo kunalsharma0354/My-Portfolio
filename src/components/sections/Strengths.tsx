@@ -5,7 +5,7 @@ import { strengths } from '@/data/portfolio';
 
 export function Strengths() {
   return (
-    <Section id="strengths" no="04" label="capabilities" title="My Strengths">
+    <Section id="strengths" no="05" label="capabilities" title="My Strengths">
       <div className="grid gap-px overflow-hidden border border-mono-800 bg-mono-800 sm:grid-cols-2 lg:grid-cols-3">
         {strengths.map((strength, index) => {
           const Icon = strength.icon;

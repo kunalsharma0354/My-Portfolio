@@ -6,6 +6,7 @@ import { hireComposeUrl } from '@/lib/gmail';
 
 const navItems = [
   { label: 'About', href: '#about' },
+  { label: 'Journey', href: '#journey' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Strengths', href: '#strengths' },

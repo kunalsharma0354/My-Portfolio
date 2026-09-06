@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ProjectCard } from '@/components/common/ProjectCard';
+import { ProjectModal } from '@/components/common/ProjectModal';
 import { Section } from '@/components/ui/Section';
 import { listSwap } from '@/components/ui/MotionPrimitives';
 import { projects, type Project } from '@/data/portfolio';
@@ -12,6 +13,7 @@ const filters: Filter[] = ['All', 'Web', 'Android'];
 
 export function Projects() {
   const [active, setActive] = useState<Filter>('All');
+  const [selected, setSelected] = useState<Project | null>(null);
   const reduced = useReducedMotion();
   const swapVariant = listSwap(reduced);
 
@@ -21,7 +23,7 @@ export function Projects() {
   );
 
   return (
-    <Section id="projects" no="03" label="work" title="Featured Projects">
+    <Section id="projects" no="04" label="work" title="Featured Projects">
       <div
         role="tablist"
         aria-label="Filter projects by category"
@@ -61,7 +63,7 @@ export function Projects() {
           >
             {visible.map((project) => (
               <li key={project.id} className="h-full">
-                <ProjectCard project={project} />
+                <ProjectCard project={project} onViewDetails={setSelected} />
               </li>
             ))}
           </motion.ul>
@@ -77,6 +79,12 @@ export function Projects() {
             No projects match this filter.
           </motion.p>
         )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {selected ? (
+          <ProjectModal project={selected} onClose={() => setSelected(null)} />
+        ) : null}
       </AnimatePresence>
     </Section>
   );
