@@ -53,7 +53,7 @@ export interface Strength {
 export const personalInfo: PersonalInfo = {
   name: 'Kunal Sharma',
   location: 'Nagpur, Maharashtra, India',
-  education: 'Secondary School Education',
+  education: 'Higher Secondary Education',
   headline:
     'Building practical web and Android applications — React + TypeScript, Kotlin, and AI-assisted workflows for faster, cleaner engineering.',
   email: 'kunalsharma9321@gmail.com',

@@ -10,7 +10,7 @@ import developerPhoto from '@/assets/images/developer.png';
 const facts = [
   { label: 'location', value: 'Nagpur, Maharashtra, India' },
   { label: 'focus', value: 'Web · Android · APIs' },
-  { label: 'education', value: 'Secondary School Education' },
+  { label: 'education', value: 'Higher Secondary Education' },
   { label: 'motto', value: 'Ship fast, solve problems.' },
 ];
 
