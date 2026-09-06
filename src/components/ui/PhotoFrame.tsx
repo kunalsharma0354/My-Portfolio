@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Tilt } from '@/components/ui/Tilt';
 
@@ -8,6 +9,8 @@ interface PhotoFrameProps {
 }
 
 export function PhotoFrame({ src, alt, caption }: PhotoFrameProps) {
+  const [touching, setTouching] = useState(false);
+
   return (
     <Tilt maxTilt={3} lift={2}>
       <figure className="group relative overflow-hidden border border-mono-800 bg-mono-950 p-3 shadow-hard shadow-black/60 sm:p-4">
@@ -16,11 +19,16 @@ export function PhotoFrame({ src, alt, caption }: PhotoFrameProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
+          onTouchStart={() => setTouching(true)}
+          onTouchEnd={() => setTouching(false)}
+          onTouchCancel={() => setTouching(false)}
         >
           <motion.img
             src={src}
             alt={alt}
-            className="aspect-[3/4] w-full object-cover grayscale contrast-105 transition-[filter] duration-500 group-hover:grayscale-0"
+            className={`aspect-[3/4] w-full object-cover grayscale contrast-105 transition-[filter] duration-500 group-hover:grayscale-0 ${
+              touching ? 'grayscale-0' : ''
+            }`}
             initial={{ scale: 1.04 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.9, ease: 'easeOut' }}
