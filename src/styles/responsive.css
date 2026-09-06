@@ -1,0 +1,56 @@
+.fluid-base {
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+}
+
+.fluid-lg {
+  font-size: clamp(1.125rem, 1rem + 0.7vw, 1.25rem);
+}
+
+.fluid-hero {
+  font-size: clamp(2.75rem, 14vw, 7.5rem);
+  line-height: 0.95;
+}
+
+.fluid-contact {
+  font-size: clamp(1.75rem, 7vw, 3.25rem);
+  line-height: 1.05;
+}
+
+/* Global horizontal-scroll guard */
+html,
+body,
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Generous touch targets on mobile / hybrid devices */
+@media (pointer: coarse) {
+  .btn,
+  .filter-tab {
+    min-height: 48px;
+  }
+
+  .social-link {
+    min-width: 48px;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Landscape phones — hero never overflows vertically */
+@media (max-height: 500px) and (orientation: landscape) {
+  #top {
+    min-height: 100vh;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* 4K+ — keep type enormous but controlled */
+@media (min-width: 1920px) {
+  .fluid-hero {
+    font-size: clamp(5rem, 4vw, 8.5rem);
+  }
+}

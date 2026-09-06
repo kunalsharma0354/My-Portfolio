@@ -1,0 +1,246 @@
+@import './responsive.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-mono-950 text-mono-100 font-sans;
+  }
+
+  ::selection {
+    @apply bg-white text-black;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-mono-950;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-full px-4 sm:max-w-5xl sm:px-6 md:max-w-6xl md:px-8 lg:max-w-7xl lg:px-10 xl:max-w-[1400px] 2xl:max-w-[1600px];
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.3em] text-mono-500;
+  }
+
+  .anchor-line {
+    @apply mt-4 block h-px w-16 bg-mono-400;
+  }
+
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-marquee {
+    animation-play-state: paused !important;
+  }
+}
+
+/* ---------- Micro-interactions & fx (monochrome, GPU-only) ---------- */
+
+/* Typewriter cursor */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  background: currentColor;
+  animation: blink 1s step-end infinite;
+  pointer-events: none;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Glitch (CSS-only, hover trigger) */
+.glitch-parent > .glitch-char {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-parent:hover > .glitch-char::before,
+.glitch-parent:hover > .glitch-char::after {
+  content: attr(data-glitch);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  white-space: pre;
+  pointer-events: none;
+}
+
+.glitch-parent:hover > .glitch-char::before {
+  color: #ffffff;
+  z-index: -1;
+  animation: glitch-1 0.4s steps(2, end) infinite alternate-reverse;
+}
+
+.glitch-parent:hover > .glitch-char::after {
+  color: #6b7280;
+  z-index: -2;
+  animation: glitch-2 0.38s steps(2, end) infinite alternate-reverse;
+}
+
+@keyframes glitch-1 {
+  0% {
+    clip-path: inset(20% 0 60% 0);
+    transform: translate(-2px, 0);
+  }
+  50% {
+    clip-path: inset(55% 0 15% 0);
+    transform: translate(2px, 0);
+  }
+  100% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(-1px, 1px);
+  }
+}
+
+@keyframes glitch-2 {
+  0% {
+    clip-path: inset(65% 0 20% 0);
+    transform: translate(2px, -1px);
+  }
+  50% {
+    clip-path: inset(10% 0 75% 0);
+    transform: translate(-2px, 0);
+  }
+  100% {
+    clip-path: inset(40% 0 45% 0);
+    transform: translate(1px, 0);
+  }
+}
+
+/* Global CRT scanlines (very subtle) */
+.scanlines::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  opacity: 0.4;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.016) 3px,
+    rgba(255, 255, 255, 0.016) 4px
+  );
+}
+
+/* Pulsing availability dot */
+.pulse-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background-color: currentColor;
+}
+
+.pulse-dot::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: inherit;
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* Button press ripple */
+.btn-ripple {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(0);
+  animation: ripple-anim 0.45s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ripple-anim {
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* Nav link animated underline */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Tabular numbers for animated counters */
+.stat-num {
+  font-variant-numeric: tabular-nums;
+}
