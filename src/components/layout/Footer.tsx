@@ -47,7 +47,7 @@ export function Footer() {
           <p className="eyebrow mb-4">Terminal</p>
           <div className="space-y-1.5 font-mono text-sm">
             <p className="text-mono-600">
-              <span className="text-mono-400">❯</span> click https://nexora.dev
+              <span className="text-mono-400">❯</span> click https://kunal-sharama-dev.vercel.app
             </p>
             <p className="text-white">Welcome to the portfolio.</p>
             <p className="text-mono-600">
