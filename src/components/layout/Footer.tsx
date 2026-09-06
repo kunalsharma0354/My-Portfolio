@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/Button';
 import { GithubIcon, LinkedInIcon } from '@/components/common/icons';
 import { personalInfo } from '@/data/portfolio';
 import { hireComposeUrl } from '@/lib/gmail';
+import { openLinkedInProfile } from '@/lib/linkedin';
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -64,7 +65,16 @@ export function Footer() {
               <GithubIcon className="h-3.5 w-3.5" />
               GitHub
             </Button>
-            <Button href={personalInfo.linkedin} variant="outline" size="sm" target="_blank" rel="noopener noreferrer">
+            <Button
+              href={personalInfo.linkedin}
+              variant="outline"
+              size="sm"
+              rel="noopener noreferrer"
+              onClick={(event) => {
+                event.preventDefault();
+                openLinkedInProfile(personalInfo.linkedin);
+              }}
+            >
               <LinkedInIcon className="h-3.5 w-3.5" />
               LinkedIn
             </Button>
