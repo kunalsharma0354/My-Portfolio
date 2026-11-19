@@ -1,6 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
+  "redirects": [
+    {
+      "source": "/resume/Kunal_sharma.pdf",
+      "destination": "/resume/Kunal_Sharma_Resume.pdf",
+      "permanent": true
+    }
+  ],
   "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }],
   "headers": [
     {
