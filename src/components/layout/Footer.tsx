@@ -49,7 +49,14 @@ export function Footer() {
           <div className="space-y-1.5 font-mono text-sm">
             <p className="text-mono-600">
               <span className="text-mono-400">❯</span>{' '}
-              <span className="selectable">click https://kunal-sharama-dev.vercel.app</span>
+              <a
+                href={personalInfo.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="selectable underline-offset-4 transition-colors hover:text-white hover:underline"
+              >
+                click {personalInfo.website.replace('https://', '')}
+              </a>
             </p>
             <p className="text-white">Welcome to the portfolio.</p>
             <p className="text-mono-600">
@@ -91,7 +98,7 @@ export function Footer() {
 
       <div className="border-t border-mono-800">
         <div className="section-shell flex flex-col items-center justify-between gap-2 py-6 font-mono text-xs text-mono-600 sm:flex-row">
-          <p>© 2023 {personalInfo.name}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {personalInfo.name}. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -9,7 +9,7 @@ import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 type Filter = 'All' | Project['category'];
 
-const filters: Filter[] = ['All', 'Web', 'Android'];
+const filters: Filter[] = ['All', ...Array.from(new Set(projects.map((project) => project.category)))];
 
 export function Projects() {
   const [active, setActive] = useState<Filter>('All');
@@ -30,16 +30,16 @@ export function Projects() {
         className="mb-8 flex flex-wrap gap-2 sm:mb-10"
       >
         {filters.map((filter) => {
-          const selected = filter === active;
+          const isActive = filter === active;
           return (
             <button
               key={filter}
               type="button"
               role="tab"
-              aria-selected={selected}
+              aria-selected={isActive}
               onClick={() => setActive(filter)}
               className={`filter-tab min-h-[44px] rounded-sm px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] transition-all duration-200 active:scale-95 ${
-                selected
+                isActive
                   ? 'bg-white text-black shadow-hard-sm shadow-white/20'
                   : 'border border-mono-700 text-mono-400 hover:border-mono-400 hover:text-white'
               }`}

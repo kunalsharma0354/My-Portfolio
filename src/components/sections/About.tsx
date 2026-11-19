@@ -9,7 +9,7 @@ import developerPhoto from '@/assets/images/developer.png';
 
 const facts = [
   { label: 'location', value: 'Nagpur, Maharashtra, India' },
-  { label: 'focus', value: 'Web · Android · APIs' },
+  { label: 'focus', value: 'Web · Android · APIs · AI' },
   { label: 'motto', value: 'Ship fast, solve problems.' },
 ];
 
@@ -44,15 +44,17 @@ export function About() {
               </p>
               <p>
                 I'm <span className="font-semibold text-white">Kunal Sharma</span> — a
-                developer from Nagpur building practical <span className="text-white">web</span>{' '}
-                and <span className="text-white">Android</span> applications. My work spans
-                React + TypeScript frontends, Vercel Serverless APIs, and Kotlin apps.
+                software engineer from Nagpur building production-oriented{' '}
+                <span className="text-white">web</span>, <span className="text-white">API</span>,{' '}
+                <span className="text-white">desktop</span> and{' '}
+                <span className="text-white">Android</span> applications. My work spans C#/.NET
+                and Node backends, React + TypeScript frontends, Kotlin apps, and MCP/AI tooling.
               </p>
               <p className="text-mono-400">
-                I ship projects end-to-end — idea → implementation — using modern
-                development tools and AI-assisted workflows to move faster, debug
-                systematically, and solve problems at the intersection of frontend, backend,
-                and mobile.
+                I ship projects end-to-end — idea → implementation — with clean architecture,
+                automated tests and AI-assisted workflows. Seven public repositories and four
+                live deployments across MCP servers, API security, document AI and media
+                processing.
               </p>
               <p>
                 <span className="font-mono text-white">&lt;/intro&gt;</span>
@@ -104,11 +106,11 @@ export function About() {
             <span className="text-white">$</span> whoami --brief
           </p>
 <p className="selectable font-mono text-lg font-bold leading-snug text-white sm:text-xl lg:text-2xl">
-  <span className="text-mono-300">3+ years of hands-on experience</span> building{' '}
-  <span className="underline decoration-white/50 underline-offset-4">AI-powered products</span>,{' '}
-  <span className="underline decoration-white/50 underline-offset-4">automation workflows</span>{' '}
-  and{' '}
-  <span className="underline decoration-white/50 underline-offset-4">software experiments</span>.
+  <span className="text-mono-300">7 public repositories and 4 live deployments</span> across{' '}
+  <span className="underline decoration-white/50 underline-offset-4">AI tooling</span>,{' '}
+  <span className="underline decoration-white/50 underline-offset-4">API security</span>,{' '}
+  <span className="underline decoration-white/50 underline-offset-4">document AI</span> and{' '}
+  <span className="underline decoration-white/50 underline-offset-4">media processing</span>.
 </p>
         </div>
       </Reveal>

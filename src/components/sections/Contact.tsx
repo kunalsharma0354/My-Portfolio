@@ -14,7 +14,7 @@ export function Contact() {
             Have a project <span className="text-mono-500">in mind?</span>
           </p>
           <p className="mt-6 max-w-xl fluid-base leading-relaxed text-mono-400 sm:text-lg">
-            From idea → implementation. Web, APIs, or Android — my inbox is always open.
+            From idea → implementation. Web, APIs, Android or AI tooling — my inbox is always open.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
